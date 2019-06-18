@@ -7,26 +7,23 @@
 
 <script>
 export default {
-
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
 
   methods: {
-    logout(){
+    logout() {
       // 点击退出时，清除token值
-      window.sessionStorage.clear();
+      window.sessionStorage.removeItem('token')
+      // console.log(this)
       // 跳转回登录页面
-      this.$router.push('/login')
+      this.$router.push('/login') // this??
     }
   },
 
-  created () {
-  }
+  created() {}
 }
 </script>
 
 <style lang='less' scoped>
-
 </style>

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Login from './components/Login.vue'
 import Home from './components/Home.vue'
 
-Vue.use(Router)
+Vue.use(Router) // ??
 
 const router = new Router({
   routes: [
@@ -15,19 +15,24 @@ const router = new Router({
 })
 
 // 路由守卫： 若未登录就直接跳转回登录页面，
+//  不调用 next(),  就会停在当前状态
 router.beforeEach((to, from, next) => {
+    //  to 要访问的路径
+    //  from  从哪里跳转来的
+    // next()  next('/login')强制跳转
     // 访问登录页面。直接放行
     if(to.path === '/login'){
       return next();  // return 则不再执行之后的内容
     }
 
-  // 获取网站中存储的token
-  const token = window.sessionStorage.getItem('token');
-  // 若不存在token， 即表示未登录
-  if(!token) {
-    this.$router.push('/login')
-  }
-  next();
+    // 获取网站中存储的token
+    const token = window.sessionStorage.getItem('token');
+    // 若不存在token， 即表示未登录
+    if(!token) {
+      this.$router.push('/login')  // this？？
+    }
+    // 若已登录，直接放行
+    next();
 })
 
 export default router;
