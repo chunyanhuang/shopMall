@@ -77,14 +77,16 @@ export default {
       // console.log(this.$refs.loginFormRef)
       // 预校验; 点击登录后先调用validate方法验证表单内容是否有误
       // 有误将不发送请求 ， valid 布尔值，验证结果
+      
       this.$refs.loginFormRef.validate(async valid => {
-        // console.log(valid)
         // 验证失败，直接终止
         if (!valid) return
-
-        // 预验证成功 ，就发送请求进行登录   解构赋值
+        // console.log(this.loginForm)
+        // return 
+        // 预验证成功 ，就发送请求进行登录   解构赋值  
         const { data: res } = await this.$http.post('login', this.loginForm)
-        console.log(res)
+        // console.log(res)
+        // return 
         if (res.meta.status !== 200) {
           // 登录失败，即用户名或密码有误 return 则后续代码不再执行
           return this.$message.error('登录失败:' + res.meta.msg)
