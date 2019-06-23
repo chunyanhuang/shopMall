@@ -17,7 +17,7 @@
               <template slot-scope="scope">
                   <el-tag v-if="scope.row.level==0" >一级</el-tag>
                   <el-tag type="success" v-else-if="scope.row.level==1" >二级</el-tag>
-                  <el-tag type="warning" v-else>一级</el-tag>
+                  <el-tag type="warning" v-else>三级</el-tag>
               </template>
            </el-table-column>
         
